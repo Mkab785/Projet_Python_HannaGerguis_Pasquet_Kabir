@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations - Analyse ANSSI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #2d2d2d;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #f8f8f8;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: #e63946;
+            text-decoration: none;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #e63946;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            margin-right : 30px;
+        }
+
+        .btn:hover {
+            background-color: #b02a37;
+            transform: scale(1.05);
+        }
+
+        /* Specific button styles for ANSSI */
+        .btn-anssi {
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* Main content styles */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2d2d2d;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #2d2d2d;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            list-style: disc;
+            padding-left: 40px;
+            text-align: justify;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer styles */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f8f8;
+            color: #2d2d2d;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'analyse/logo_esilv_png_couleur.png' %}" alt="Logo">
+            <a href="/" class="logo-text">Interface Django - ANSSI</a>
+        </div>
+        <a href="https://www.cert.ssi.gouv.fr/" target="_blank" class="btn">Site ANSSI</a>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <h1>Informations sur le Projet</h1>
+        
+        <section>
+            <h2>Contexte</h2>
+            <p>
+                La cybersécurité est devenue un enjeu primordial pour les entreprises et les organisations du monde entier.
+                Face à l'augmentation des cyberattaques, il est indispensable de détecter rapidement les vulnérabilités dans
+                les systèmes d'information et de les corriger efficacement. L'Agence Nationale de la Sécurité des Systèmes
+                d'Information (ANSSI) joue un rôle central en publiant régulièrement des avis et alertes sur les menaces
+                critiques. 
+                <br>
+                Ceci étant dit, l'ANSSI n'assure aucun suivi des alertes et n'informe pas les personnes qui pourraient
+                directement être concernés. Elle met uniquement à dispostion un petit résumé, et un feed RSS bien trop compliqué.
+                Contrairement à son homologue américain, qui lui assure l'envoi de notfications et un réel 
+                traitement des informations. C'est dans cette optique que s'inscrit notre projet.
+            </p>
+        </section>
+
+        <br>
+
+        <section>
+            <h2>Objectifs du Projet</h2>
+            <ul>
+                <li>Extraction des données des flux RSS des avis et alertes ANSSI.</li>
+                <li>Identification des CVE (Common Vulnerabilities and Exposures) mentionnées dans les bulletins.</li>
+                <li>Enrichissement des CVE avec des informations complémentaires via des API externes.</li>
+                <li>Consolidation des données dans un format structuré et exploitable (DataFrame Pandas).</li>
+                <li>Visualisation et analyse des vulnérabilités pour identifier les priorités d'action.</li>
+                <li>Génération d'alertes personnalisées et envoi de notifications par e-mail.</li>
+            </ul>
+        </section>
+
+        <br>
+
+        <section>
+            <h2>Technologies Utilisées</h2>
+            <ul>
+                <li><strong>Feedparser</strong> : pour extraire et traiter les flux RSS, notamment ceux des avis et alertes de l'ANSSI.</li>
+                <li><strong>Pandas</strong> : pour structurer, analyser et manipuler les données consolidées dans un format tabulaire.</li>
+                <li><strong>Django</strong> : pour créer une interface web intuitive et accessible, permettant de présenter les résultats de l'analyse.</li>
+                <li><strong>Requests</strong> : pour effectuer des requêtes HTTP et récupérer des données à partir des API externes comme CVE et EPSS.</li>
+                <li><strong>Re</strong> : pour manipuler les expressions régulières et extraire les identifiants CVE depuis les flux JSON ou HTML.</li>
+                <li><strong>Smtplib</strong> : pour envoyer des notifications et alertes par email aux utilisateurs concernés.</li>
+                <li><strong>Email</strong> : pour composer et formater les messages email en HTML ou en texte brut.</li>
+                <li><strong>Schedule</strong> : pour planifier des tâches automatisées, comme la récupération périodique des données ou l'envoi d'emails.</li>
+                <li><strong>Os</strong> : pour gérer les chemins de fichiers et accéder aux fichiers CSV ou autres ressources locales.</li>
+                <li><strong>Matplotlib/Plotly</strong> : pour générer des visualisations graphiques permettant de mieux interpréter les données, comme des diagrammes ou des heatmaps.</li>
+            </ul>
+        </section>
+
+        <br>
+
+        <section>
+            <h2>Pourquoi ce projet est important ?</h2>
+            <p>
+                En automatisant l'analyse des avis et alertes publiés par l'ANSSI, ce projet simplifie considérablement le travail des professionnels de la cybersécurité. Ces derniers, 
+                confrontés à une augmentation exponentielle des menaces numériques, peuvent ainsi identifier rapidement les vulnérabilités critiques présentes dans leurs systèmes. Grâce 
+                à cette interface, il devient possible de prioriser efficacement les actions à mener pour réduire les risques d'attaques, tout en assurant une meilleure allocation des 
+                ressources disponibles.
+                <br>
+                En outre, l'intégration de données enrichies via des API externes, comme celles de Mitre, fournit des informations contextuelles précieuses sur les vulnérabilités. 
+                Cela permet aux équipes de sécurité d'adopter une approche proactive, en anticipant les menaces susceptibles d'avoir un impact significatif sur leurs infrastructures. 
+                Par ailleurs, les visualisations graphiques générées par l'outil apportent une clarté et une lisibilité indispensables pour communiquer les résultats aux différentes parties prenantes, 
+                qu'il s'agisse des décideurs stratégiques ou des responsables techniques.
+                <br>
+                Enfin, ce projet ne se limite pas à la simple détection des menaces. Il offre également des fonctionnalités avancées, telles que la génération d'alertes personnalisées et l'envoi automatique de notifications, garantissant une réactivité accrue face aux cybermenaces émergentes. En centralisant les informations critiques et en les présentant de manière exploitable, cette solution contribue à renforcer la posture de cybersécurité des organisations et à réduire les risques associés aux attaques informatiques de manière durable et efficace.
+            </p>
+        </section>
+
+        <br>
+
+        <!-- Bouton vers le site de l'ANSSI -->
+        <a href="https://www.cert.ssi.gouv.fr/" target="_blank" class="btn btn-anssi">Visiter le site de l'ANSSI</a>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Interface Django - ANSSI. Tous droits réservés. | <a href="/">Retour au menu principal</a>
+    </footer>
+
+    <script>
+        document.addEventListener("scroll", () => {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
