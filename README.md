@@ -47,4 +47,4 @@ Ce projet a permis de développer une expertise à la croisée du développement
 * **Développement :** Maîtrise de **Python** pour l'automatisation.
 * **API & Données :** Utilisation d'**API REST** pour l'enrichissement des données et manipulation via la librairie **Pandas**.
 * **Visualisation :** Création de tableaux de bord et graphiques avec **Matplotlib** et **Plotly**.
-* **Traitement de Texte :** Utilisation des expressions régulières (**regex
+* **Traitement de Texte :** Utilisation des expressions régulières (**regex)
